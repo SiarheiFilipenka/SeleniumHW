@@ -6,6 +6,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 
+import java.time.Duration;
+
 public class CommonMethods {
 
     public static WebDriver driver;
@@ -22,6 +24,7 @@ public class CommonMethods {
         }
         driver.manage().window().maximize();
         driver.get(URL);
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
     }
 
     public static void closeBrowser() {
@@ -35,18 +38,18 @@ public class CommonMethods {
         element.sendKeys(text);
     }
 
-    public static void selectFromDropdown(WebElement dd, String visibleText) {
-        Select sel = new Select(dd);
+    public static void selectFromDropdown(WebElement dropDown, String visibleText) {
+        Select sel = new Select(dropDown);
         sel.selectByVisibleText(visibleText);
     }
 
-    public static void selectFromDropdown(String value, WebElement dd) {
-        Select sel = new Select(dd);
+    public static void selectFromDropdown(String value, WebElement dropDown) {
+        Select sel = new Select(dropDown);
         sel.selectByValue(value);
     }
 
-    public static void selectFromDropdown(WebElement dd, int index) {
-        Select sel = new Select(dd);
+    public static void selectFromDropdown(WebElement dropDown, int index) {
+        Select sel = new Select(dropDown);
         sel.selectByIndex(index);
     }
 }
